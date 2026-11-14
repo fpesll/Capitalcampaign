@@ -190,7 +190,7 @@ body{
   margin-top:22px;padding:24px;background:#fff;border:1px solid #dbe9f2;
   border-radius:20px;box-shadow:0 10px 30px rgba(7,59,112,.07);animation:detailIn .22s ease
 }
-.project-detail img{width:100%;aspect-ratio:10/7;object-fit:cover;border-radius:15px;display:block}
+.project-detail img{width:100%;height:auto;aspect-ratio:10/7;object-fit:cover;border-radius:15px;display:block}
 .project-copy{align-self:center}
 .project-copy h3{margin:.2rem 0 .55rem;color:var(--navy);font:900 2rem Georgia,serif}
 .project-copy p{font-size:1rem;line-height:1.65;margin:.65rem 0}
@@ -227,7 +227,7 @@ body{
 
 <main>
   <section class="hero-section" aria-label="Interactive sponsorship opportunities">
-    <img class="hero-image" src="hero.png"
+    <img class="hero-image" src="assets/hero.webp" width="1500" height="1000"
       alt="Fox Point East Side Little League fundraising field scene with the raised railroad bridge beyond the outfield fence and five sponsorship opportunities">
 
     <!-- Invisible semantic click/hover zones. The visible labels are part of the artwork. -->
@@ -277,7 +277,7 @@ body{
         </button>
       </div>
       <div class="project-detail" id="projectDetail">
-        <img id="projectPhoto" src="batting-cages.webp" alt="Batting cages at the Little League field">
+        <img id="projectPhoto" src="assets/batting-cages.webp" width="1200" height="840" alt="Batting cages at the Little League field">
         <div class="project-copy">
           <div class="card-kicker" id="projectKicker">NEW BATTING CAGES</div>
           <h3 id="projectTitle">Safe. Durable. Ready for What’s Next.</h3>
@@ -375,13 +375,13 @@ buttons.forEach(button=>{
 
 
 const projectContent={
-  cages:{photo:"batting-cages.webp",kicker:"NEW BATTING CAGES",title:"Safe. Durable. Ready for What’s Next.",
+  cages:{photo:"assets/batting-cages.webp",kicker:"NEW BATTING CAGES",title:"Safe. Durable. Ready for What’s Next.",
     copy:"Our current batting cages were damaged during last winter’s snow storms. This project will replace them with a modern, durable setup that gives players a safe, reliable place to practice, develop their swings, and build confidence.",
     copy2:"Depending on the final footprint and labor costs, the replacing the entire bullpen will cost between $35,000 - 45,000."},
-  bullpen:{photo:"bullpen.jpg",kicker:"DEDICATED BULLPEN",title:"A Better Place to Prepare.",
+  bullpen:{photo:"assets/bullpen.webp",kicker:"DEDICATED BULLPEN",title:"A Better Place to Prepare.",
     copy:"A dedicated bullpen gives pitchers and catchers a purpose-built place to work on mechanics, communication, and confidence without taking practice space away from the field.",
     copy2:"The equipment we need for a safe and bullpen experience will be approximately $1250."},
-  scoreboard:{photo:"scoreboard.jpg",kicker:"SCOREBOARDS & AV UPGRADES",title:"Make Game Day Feel Like Game Day.",
+  scoreboard:{photo:"assets/scoreboard.webp",kicker:"SCOREBOARDS & AV UPGRADES",title:"Make Game Day Feel Like Game Day.",
     copy:"Modern scoreboards and AV upgrades can improve the experience for players, families, coaches, and volunteers while giving the league a more visible and engaging game-day presence.",
     copy2:"The estimated cost to overhaul the AV system and improve or replace the scoreboards at Gano Fields will run cost the league between $5,000-$10,000."}
 };
