@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Building the Future | Fox Point East Side Little League</title>
+<style>
+:root{
+  --navy:#073b70;
+  --blue:#67b6f4;
+  --bright:#1596dc;
+  --ink:#183b5a;
+  --cream:#fffaf0;
+  --sky:#eef8ff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#f6fbfe;
+  color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+.hero-section{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  background:#cfefff;
+}
+.hero-image{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:initial;
+  object-position:initial;
+}
+.hotspot{
+  position:absolute;z-index:4;width:10%;height:18%;min-width:70px;min-height:55px;
+  transform:translate(-50%,-50%);border:0;background:transparent;border-radius:50%;cursor:pointer;
+}
+.hotspot:hover,.hotspot:focus-visible,.hotspot.active{
+  outline:3px solid rgba(103,182,244,.9);outline-offset:4px;background:rgba(103,182,244,.10);
+}
+.hotspot:focus-visible{box-shadow:0 0 0 5px rgba(255,255,255,.85)}
+#grand{left:50%;top:47%}
+#triple{left:15%;top:62%}
+#double{left:50%;top:59%}
+#single{left:88%;top:63%}
+#home{left:50%;top:74%}
+
+.sponsor-card{
+  position:absolute;
+  z-index:10;
+  right:3%;
+  top:52%;
+  width:min(390px,34vw);
+  transform:translateY(-50%);
+  padding:24px;
+  background:rgba(255,253,247,.98);
+  border:1px solid #d8e6ef;
+  border-radius:22px;
+  box-shadow:0 20px 60px rgba(7,59,112,.28);
+}
+.sponsor-card[hidden]{display:none}
+.card-close{
+  float:right;
+  width:34px;height:34px;
+  border:0;border-radius:50%;
+  background:#edf6fb;
+  color:#567;
+  font-size:22px;
+  cursor:pointer;
+}
+.card-kicker{
+  margin-top:4px;
+  color:var(--bright);
+  font-size:.75rem;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.sponsor-card h2{
+  margin:.15em 0 .05em;
+  color:var(--navy);
+  font:900 2rem Georgia,serif;
+}
+.card-price{
+  margin-bottom:12px;
+  color:var(--bright);
+  font-size:1.4rem;
+  font-weight:950;
+}
+.sponsor-card ul{
+  margin:0;
+  padding-left:20px;
+  line-height:1.5;
+}
+.sponsor-card li+li{margin-top:7px}
+.cta{
+  display:inline-block;
+  margin-top:17px;
+  padding:12px 18px;
+  border-radius:999px;
+  background:var(--bright);
+  color:white;
+  text-decoration:none;
+  font-weight:900;
+}
+.instructions{
+  padding:17px 18px 20px;
+  text-align:center;
+  color:#587084;
+  font-size:1rem;
+}
+.content{
+  max-width:1200px;
+  margin:auto;
+  padding:10px 22px 70px;
+}
+.section{
+  margin-top:20px;
+  padding:28px;
+  background:white;
+  border:1px solid #dbe9f2;
+  border-radius:24px;
+  box-shadow:0 10px 30px rgba(7,59,112,.07);
+}
+.section-title{
+  margin:0 0 20px;
+  color:var(--navy);
+  font:900 2rem Georgia,serif;
+}
+.projects{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+.project{
+  padding:19px;
+  background:var(--sky);
+  border-left:5px solid var(--bright);
+  border-radius:16px;
+}
+.project strong{
+  display:block;
+  margin-bottom:7px;
+  color:var(--navy);
+  font-size:1.05rem;
+}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.stat{
+  padding:20px 15px;
+  background:var(--cream);
+  border-radius:16px;
+  text-align:center;
+}
+.stat b{
+  display:block;
+  color:var(--navy);
+  font-size:2rem;
+}
+.stat span{font-size:.9rem}
+
+
+.campaign-heading{text-align:center;max-width:760px;margin:0 auto 26px}
+.campaign-kicker{color:var(--bright);font-size:.78rem;letter-spacing:.18em;font-weight:950}
+.campaign-heading p{margin:0;color:#587084;font-size:1.05rem}
+.moment-copy{max-width:900px;margin:22px auto 0!important;color:var(--ink)!important;font-size:1.12rem!important;line-height:1.65;font-weight:500}
+.projects-section{padding:64px 34px 72px;min-height:820px}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.project{
+  appearance:none;width:100%;border:2px solid #dbe9f2;border-radius:20px;
+  background:#f7fcff;color:var(--ink);padding:24px 20px;text-align:center;
+  cursor:pointer;transition:.2s ease
+}
+.project:hover,.project:focus-visible,.project.active{
+  border-color:var(--bright);background:#eef8ff;
+  box-shadow:0 10px 28px rgba(21,150,220,.13);
+  transform:translateY(-2px);outline:none
+}
+.project-icon{display:grid;place-items:center;width:62px;height:62px;margin:0 auto 12px;border-radius:50%;background:#d9efff;color:var(--navy);font-size:1.65rem}
+.project strong{display:block;margin-bottom:8px;color:var(--navy);font-size:1.1rem}
+.project span:last-child{display:block;font-size:.94rem;line-height:1.45}
+.project-detail{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px;
+  margin-top:22px;padding:24px;background:#fff;border:1px solid #dbe9f2;
+  border-radius:20px;box-shadow:0 10px 30px rgba(7,59,112,.07);animation:detailIn .22s ease
+}
+.project-detail img{width:100%;aspect-ratio:10/7;object-fit:cover;border-radius:15px;display:block}
+.project-copy{align-self:center}
+.project-copy h3{margin:.2rem 0 .55rem;color:var(--navy);font:900 2rem Georgia,serif}
+.project-copy p{font-size:1rem;line-height:1.65;margin:.65rem 0}
+@keyframes detailIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+@media(max-width:800px){
+  .hero-section{min-height:0;overflow:visible}
+  .hero-image{height:auto;min-height:0}
+  .hotspot{width:15%;height:16%;min-width:48px;min-height:42px}
+  #grand{left:50%;top:47%}
+  #triple{left:15%;top:62%}
+  #double{left:50%;top:59%}
+  #single{left:88%;top:63%}
+  #home{left:50%;top:74%}
+  .sponsor-card{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto;transform:none;max-height:72vh;overflow:auto}
+  .projects,.stats{grid-template-columns:1fr 1fr}
+  .project-detail{grid-template-columns:1fr;gap:20px}
+  .project-copy h3{font-size:1.65rem}
+}
+@media(max-width:520px){
+  .hero-section{min-height:0}
+  .hero-image{height:auto;min-height:0}
+  .projects,.stats{grid-template-columns:1fr}
+  .projects-section{padding:48px 20px 60px;min-height:0}
+  .project-detail{padding:17px}
+  .project-copy h3{font-size:1.45rem}
+  .content{padding:5px 12px 45px}
+  .section{padding:21px}
+  .section-title{font-size:1.65rem}
+}
+</style>
+</head>
+<body>
+
+<main>
+  <section class="hero-section" aria-label="Interactive sponsorship opportunities">
+    <img class="hero-image" src="hero.png"
+      alt="Fox Point East Side Little League fundraising field scene with the raised railroad bridge beyond the outfield fence and five sponsorship opportunities">
+
+    <!-- Invisible semantic click/hover zones. The visible labels are part of the artwork. -->
+    <button class="hotspot" id="grand" aria-label="Grand Slam sponsorship, $10,000 and up"></button>
+    <button class="hotspot" id="triple" aria-label="Triple sponsorship, $2,500 and up"></button>
+    <button class="hotspot" id="double" aria-label="Double sponsorship, $1,000 and up"></button>
+    <button class="hotspot" id="single" aria-label="Single sponsorship, $250"></button>
+    <button class="hotspot" id="home" aria-label="Home Run sponsorship, $5,000 and up"></button>
+
+    <aside class="sponsor-card" id="sponsorCard" hidden aria-live="polite">
+      <button class="card-close" id="closeCard" aria-label="Close sponsorship details">×</button>
+      <div class="card-kicker" id="cardLevel"></div>
+      <h2 id="cardTitle"></h2>
+      <div class="card-price" id="cardPrice"></div>
+      <ul id="cardBenefits"></ul>
+      <a class="cta" href="mailto:sponsor@fpesll.com?subject=75%20Seasons%20Strong%20Sponsorship">Let's Talk Sponsorship →</a>
+    </aside>
+  </section>
+
+  <div class="instructions">
+    Hover over a sponsorship spot, or tap one on mobile, to explore recognition benefits.
+  </div>
+
+  <section class="content">
+    <section class="section projects-section">
+      <div class="campaign-heading">
+        <div class="campaign-kicker">CAPITAL CAMPAIGN</div>
+        <h2 class="section-title">Building for the Next 75</h2>
+        <p>Three projects designed to keep Fox Point East Side Little League strong for the next generation.</p>
+        <p class="moment-copy">This year, the City of Providence made a significant investment in our fields — a public vote of confidence in this league. 75 Seasons Strong is our answer: a capital campaign to add to that investment and build the infrastructure our next 75 years deserve.</p>
+      </div>
+      <div class="projects" role="tablist" aria-label="Capital campaign projects">
+        <button class="project active" data-project="cages" role="tab" aria-selected="true">
+          <span class="project-icon">⚾</span>
+          <strong>New Batting Cages</strong>
+          <span>Replace the cages damaged during the snow storms last year</span>
+        </button>
+        <button class="project" data-project="bullpen" role="tab" aria-selected="false">
+          <span class="project-icon">🏟</span>
+          <strong>Dedicated Bullpen</strong>
+          <span>A purpose-built space for pitchers and catchers to safely practice.</span>
+        </button>
+        <button class="project" data-project="scoreboard" role="tab" aria-selected="false">
+          <span class="project-icon">📺</span>
+          <strong>Scoreboards &amp; AV Upgrades</strong>
+          <span>A modern game-day experience for players and families.</span>
+        </button>
+      </div>
+      <div class="project-detail" id="projectDetail">
+        <img id="projectPhoto" src="batting-cages.webp" alt="Batting cages at the Little League field">
+        <div class="project-copy">
+          <div class="card-kicker" id="projectKicker">NEW BATTING CAGES</div>
+          <h3 id="projectTitle">Safe. Durable. Ready for What’s Next.</h3>
+          <p id="projectCopy">Our current batting cages were damaged during last winter’s snow storms. This project will replace them with a modern, durable setup that gives players a safe, reliable place to practice, develop their swings, and build confidence.</p>
+          <p id="projectCopy2">Depending on the final footprint and labor costs, the replacing the entire bullpen will cost between $35,000 - 45,000.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section">
+      <h2 class="section-title">Who We Serve</h2>
+      <div class="stats">
+        <div class="stat"><b>500+</b><span>players per season</span></div>
+        <div class="stat"><b>15+</b><span>teams across divisions</span></div>
+        <div class="stat"><b>75</b><span>years in the community</span></div>
+        <div class="stat"><b>100%</b><span>local Fox Point &amp; East Side families</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const sponsorships = {
+  grand:{
+    level:"Grand Slam",
+    title:"Grand Slam Sponsor",
+    price:"$10,000+",
+    benefits:[
+      "Plaque at the Fox Den",
+      "Prominent signage at all league fields",
+      "Featured at Opening Day 75th anniversary ceremony",
+      "Recognition on website, social media & campaign materials"
+    ]
+  },
+  home:{
+    level:"Home Run",
+    title:"Home Run Sponsor",
+    price:"$5,000+",
+    benefits:[
+      "Plaque at the Fox Den",
+      "Signage at league fields",
+      "Recognition at Opening Day ceremony",
+      "Website & social media recognition"
+    ]
+  },
+  triple:{
+    level:"Triple",
+    title:"Triple Sponsor",
+    price:"$2,500+",
+    benefits:[
+      "Recognition on project signage",
+      "Signage at a league field",
+      "Website & campaign communications",
+      "Recognition at Opening Day ceremony"
+    ]
+  },
+  double:{
+    level:"Double",
+    title:"Double Sponsor",
+    price:"$1,000+",
+    benefits:[
+      "Recognition on league website",
+      "Mention in campaign communications"
+    ]
+  },
+  single:{
+    level:"Single",
+    title:"Single Sponsor",
+    price:"$250",
+    benefits:[
+      "Every contribution brings us closer to the goal",
+      "Donor recognition in program"
+    ]
+  }
+};
+
+const card=document.getElementById("sponsorCard");
+const buttons=[...document.querySelectorAll(".hotspot")];
+
+function showSponsor(key){
+  const s=sponsorships[key];
+  buttons.forEach(b=>b.classList.toggle("active",b.id===key));
+  document.getElementById("cardLevel").textContent=s.level;
+  document.getElementById("cardTitle").textContent=s.title;
+  document.getElementById("cardPrice").textContent=s.price;
+  document.getElementById("cardBenefits").innerHTML=s.benefits.map(b=>`<li>${b}</li>`).join("");
+  card.hidden=false;
+}
+
+buttons.forEach(button=>{
+  button.addEventListener("mouseenter",()=>showSponsor(button.id));
+  button.addEventListener("focus",()=>showSponsor(button.id));
+  button.addEventListener("click",()=>showSponsor(button.id));
+});
+
+
+const projectContent={
+  cages:{photo:"batting-cages.webp",kicker:"NEW BATTING CAGES",title:"Safe. Durable. Ready for What’s Next.",
+    copy:"Our current batting cages were damaged during last winter’s snow storms. This project will replace them with a modern, durable setup that gives players a safe, reliable place to practice, develop their swings, and build confidence.",
+    copy2:"Depending on the final footprint and labor costs, the replacing the entire bullpen will cost between $35,000 - 45,000."},
+  bullpen:{photo:"bullpen.jpg",kicker:"DEDICATED BULLPEN",title:"A Better Place to Prepare.",
+    copy:"A dedicated bullpen gives pitchers and catchers a purpose-built place to work on mechanics, communication, and confidence without taking practice space away from the field.",
+    copy2:"The equipment we need for a safe and bullpen experience will be approximately $1250."},
+  scoreboard:{photo:"scoreboard.jpg",kicker:"SCOREBOARDS & AV UPGRADES",title:"Make Game Day Feel Like Game Day.",
+    copy:"Modern scoreboards and AV upgrades can improve the experience for players, families, coaches, and volunteers while giving the league a more visible and engaging game-day presence.",
+    copy2:"The estimated cost to overhaul the AV system and improve or replace the scoreboards at Gano Fields will run cost the league between $5,000-$10,000."}
+};
+function selectProject(key){
+  const p=projectContent[key];
+  document.querySelectorAll(".project").forEach(b=>{
+    const active=b.dataset.project===key;b.classList.toggle("active",active);b.setAttribute("aria-selected",active);
+  });
+  document.getElementById("projectPhoto").src=p.photo;
+  document.getElementById("projectPhoto").alt=p.title;
+  document.getElementById("projectKicker").textContent=p.kicker;
+  document.getElementById("projectTitle").textContent=p.title;
+  document.getElementById("projectCopy").textContent=p.copy;
+  document.getElementById("projectCopy2").textContent=p.copy2;
+}
+document.querySelectorAll(".project").forEach(btn=>{
+  btn.addEventListener("mouseenter",()=>selectProject(btn.dataset.project));
+  btn.addEventListener("focus",()=>selectProject(btn.dataset.project));
+  btn.addEventListener("click",()=>selectProject(btn.dataset.project));
+});
+
+document.getElementById("closeCard").addEventListener("click",()=>{
+  card.hidden=true;
+  buttons.forEach(b=>b.classList.remove("active"));
+});
+</script>
+</body>
+</html>
