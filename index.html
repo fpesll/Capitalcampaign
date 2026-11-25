@@ -4,23 +4,55 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Building the Future | Fox Point East Side Little League</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Zilla+Slab:wght@600;700&display=swap" rel="stylesheet">
 <style>
+/* 75 Seasons Strong campaign look: colors and type from the FPESLL design
+   system's Capital Campaign section (matches the campaign artwork). */
 :root{
-  --navy:#073b70;
-  --blue:#67b6f4;
-  --bright:#1596dc;
-  --ink:#183b5a;
-  --cream:#fffaf0;
-  --sky:#eef8ff;
+  --navy:#012F60;        /* campaign-navy: ink, bands, buttons */
+  --sky:#3EBDF4;         /* campaign-sky: bright accents */
+  --sky-light:#8CDBFA;   /* campaign-sky-light: soft panels, labels on navy */
+  --red:#BC0000;         /* campaign-red: seams, eyebrows, small accents */
+  --mist:#F4FBFE;        /* page ground */
+  --ink:#012F60;
+  --display:Caprasimo,"Cooper Black",Georgia,serif;
+  --caps:"Zilla Slab",Rockwell,Georgia,serif;
+  --body:Arial,Helvetica,sans-serif;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{
   margin:0;
-  background:#f6fbfe;
+  background:var(--mist);
   color:var(--ink);
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.55;
 }
+.eyebrow,.card-kicker,.campaign-kicker{
+  font-family:var(--caps);font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+}
+
+/* Top bar with Donate */
+.topbar{position:sticky;top:0;z-index:20;background:var(--navy)}
+.topbar-inner{max-width:1200px;margin:auto;padding:10px 22px;display:flex;align-items:center;gap:14px}
+.topbar img{width:48px;height:auto;background:#fff;border-radius:8px;display:block}
+.topbar-name{flex:1;color:#fff;font-family:var(--caps);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.85rem}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.4em;min-height:46px;padding:0 22px;
+  border-radius:8px;border:2px solid var(--navy);text-decoration:none;cursor:pointer;
+  font-family:var(--caps);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.9rem;
+}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover,.btn-primary:focus-visible{background:#0A4A8C;border-color:#0A4A8C}
+.btn-light{background:#fff;color:var(--navy);border-color:#fff}
+.btn-light:hover,.btn-light:focus-visible{background:var(--sky-light);border-color:var(--sky-light)}
+.btn-outline{background:#fff;color:var(--navy)}
+.btn-outline:hover,.btn-outline:focus-visible{background:var(--mist)}
+
+/* Hero + diamond hotspots (artwork unchanged) */
 .hero-section{
   position:relative;
   width:100%;
@@ -39,14 +71,14 @@ body{
   transform:translate(-50%,-50%);border:0;background:transparent;border-radius:50%;cursor:pointer;
 }
 .hotspot:hover,.hotspot:focus-visible,.hotspot.active{
-  outline:3px solid rgba(103,182,244,.9);outline-offset:4px;background:rgba(103,182,244,.10);
+  outline:3px solid var(--navy);outline-offset:4px;background:rgba(140,219,250,.25);
 }
-.hotspot:focus-visible{box-shadow:0 0 0 5px rgba(255,255,255,.85)}
-#grand{left:50%;top:47%}
-#triple{left:15%;top:62%}
-#double{left:50%;top:59%}
-#single{left:88%;top:63%}
-#home{left:50%;top:74%}
+.hotspot:focus-visible{box-shadow:0 0 0 5px #fff}
+#grand{left:71%;top:52%}
+#triple{left:14.3%;top:70%}
+#double{left:50.5%;top:63.5%}
+#single{left:86%;top:70.5%}
+#home{left:50.1%;top:85%}
 
 .sponsor-card{
   position:absolute;
@@ -55,40 +87,36 @@ body{
   top:52%;
   width:min(390px,34vw);
   transform:translateY(-50%);
-  padding:24px;
-  background:rgba(255,253,247,.98);
-  border:1px solid #d8e6ef;
-  border-radius:22px;
-  box-shadow:0 20px 60px rgba(7,59,112,.28);
+  padding:22px 24px 24px;
+  background:#fff;
+  border:2px solid var(--navy);
+  border-radius:14px;
+  box-shadow:0 6px 0 rgba(1,47,96,.25);
 }
 .sponsor-card[hidden]{display:none}
 .card-close{
   float:right;
   width:34px;height:34px;
-  border:0;border-radius:50%;
-  background:#edf6fb;
-  color:#567;
-  font-size:22px;
+  border:2px solid var(--navy);border-radius:50%;
+  background:#fff;
+  color:var(--navy);
+  font-size:20px;line-height:1;
   cursor:pointer;
 }
 .card-kicker{
   margin-top:4px;
-  color:var(--bright);
-  font-size:.75rem;
-  font-weight:900;
-  letter-spacing:.12em;
-  text-transform:uppercase;
+  color:var(--red);
+  font-size:.78rem;
 }
 .sponsor-card h2{
   margin:.15em 0 .05em;
   color:var(--navy);
-  font:900 2rem Georgia,serif;
+  font:400 2rem/1.1 var(--display);
 }
 .card-price{
   margin-bottom:12px;
-  color:var(--bright);
-  font-size:1.4rem;
-  font-weight:950;
+  color:var(--navy);
+  font:400 1.5rem var(--display);
 }
 .sponsor-card ul{
   margin:0;
@@ -96,57 +124,68 @@ body{
   line-height:1.5;
 }
 .sponsor-card li+li{margin-top:7px}
-.cta{
-  display:inline-block;
-  margin-top:17px;
-  padding:12px 18px;
-  border-radius:999px;
-  background:var(--bright);
-  color:white;
-  text-decoration:none;
-  font-weight:900;
-}
+.card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 .instructions{
-  padding:17px 18px 20px;
+  padding:14px 18px;
   text-align:center;
-  color:#587084;
-  font-size:1rem;
+  background:var(--navy);
+  color:#fff;
+  font-family:var(--caps);font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  font-size:.85rem;
 }
+
+/* Content */
 .content{
   max-width:1200px;
   margin:auto;
   padding:10px 22px 70px;
 }
 .section{
-  margin-top:20px;
+  margin-top:24px;
   padding:28px;
-  background:white;
-  border:1px solid #dbe9f2;
-  border-radius:24px;
-  box-shadow:0 10px 30px rgba(7,59,112,.07);
+  background:#fff;
+  border:2px solid var(--navy);
+  border-radius:14px;
 }
 .section-title{
   margin:0 0 20px;
   color:var(--navy);
-  font:900 2rem Georgia,serif;
+  font:400 2.2rem/1.1 var(--display);
 }
-.projects{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
+.campaign-heading{text-align:center;max-width:760px;margin:0 auto 26px}
+.campaign-kicker{color:var(--red);font-size:.85rem;margin-bottom:6px}
+.campaign-heading p{margin:0;color:var(--navy);font-size:1.1rem}
+.moment-copy{max-width:900px;margin:22px auto 0!important;color:var(--ink)!important;font-size:1.08rem!important;line-height:1.65}
+.projects-section{padding:64px 34px 72px;min-height:820px}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .project{
-  padding:19px;
-  background:var(--sky);
-  border-left:5px solid var(--bright);
-  border-radius:16px;
+  appearance:none;width:100%;border:2px solid var(--navy);border-radius:14px;
+  background:#fff;color:var(--ink);padding:24px 20px;text-align:center;font:inherit;
+  cursor:pointer;transition:background .2s ease,transform .2s ease
 }
-.project strong{
-  display:block;
-  margin-bottom:7px;
-  color:var(--navy);
-  font-size:1.05rem;
+.project:hover,.project:focus-visible,.project.active{
+  background:var(--sky-light);
+  transform:translateY(-2px);outline:none
 }
+.project:focus-visible{box-shadow:0 0 0 3px #fff,0 0 0 6px var(--navy)}
+.project-icon{display:grid;place-items:center;width:62px;height:62px;margin:0 auto 12px;border-radius:50%;background:#fff;border:2px solid var(--navy)}
+.project-icon svg{width:22px;height:44px}
+.project strong{display:block;margin-bottom:8px;color:var(--navy);font:400 1.3rem/1.15 var(--display)}
+.project span:last-child{display:block;font-size:.95rem;line-height:1.45}
+.project-detail{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px;
+  margin-top:22px;padding:24px;background:#fff;border:2px solid var(--navy);
+  border-radius:14px;animation:detailIn .22s ease
+}
+.project-detail img{width:100%;height:auto;aspect-ratio:10/7;object-fit:cover;border-radius:10px;display:block}
+.project-copy{align-self:center}
+.project-copy h3{margin:.2rem 0 .55rem;color:var(--navy);font:400 2rem/1.1 var(--display)}
+.project-copy p{font-size:1rem;line-height:1.65;margin:.65rem 0}
+@keyframes detailIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Who We Serve: navy band */
+.section-dark{background:var(--navy);color:#fff}
+.section-dark .section-title{color:#fff;text-align:center}
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -154,63 +193,40 @@ body{
 }
 .stat{
   padding:20px 15px;
-  background:var(--cream);
-  border-radius:16px;
+  border:2px solid var(--sky-light);
+  border-radius:12px;
   text-align:center;
 }
 .stat b{
   display:block;
-  color:var(--navy);
-  font-size:2rem;
+  color:#fff;
+  font:400 2.6rem/1.1 var(--display);
 }
-.stat span{font-size:.9rem}
+.stat span{color:var(--sky-light);font-family:var(--caps);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
 
-
-.campaign-heading{text-align:center;max-width:760px;margin:0 auto 26px}
-.campaign-kicker{color:var(--bright);font-size:.78rem;letter-spacing:.18em;font-weight:950}
-.campaign-heading p{margin:0;color:#587084;font-size:1.05rem}
-.moment-copy{max-width:900px;margin:22px auto 0!important;color:var(--ink)!important;font-size:1.12rem!important;line-height:1.65;font-weight:500}
-.projects-section{padding:64px 34px 72px;min-height:820px}
-.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.project{
-  appearance:none;width:100%;border:2px solid #dbe9f2;border-radius:20px;
-  background:#f7fcff;color:var(--ink);padding:24px 20px;text-align:center;
-  cursor:pointer;transition:.2s ease
-}
-.project:hover,.project:focus-visible,.project.active{
-  border-color:var(--bright);background:#eef8ff;
-  box-shadow:0 10px 28px rgba(21,150,220,.13);
-  transform:translateY(-2px);outline:none
-}
-.project-icon{display:grid;place-items:center;width:62px;height:62px;margin:0 auto 12px;border-radius:50%;background:#d9efff;color:var(--navy);font-size:1.65rem}
-.project strong{display:block;margin-bottom:8px;color:var(--navy);font-size:1.1rem}
-.project span:last-child{display:block;font-size:.94rem;line-height:1.45}
-.project-detail{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px;
-  margin-top:22px;padding:24px;background:#fff;border:1px solid #dbe9f2;
-  border-radius:20px;box-shadow:0 10px 30px rgba(7,59,112,.07);animation:detailIn .22s ease
-}
-.project-detail img{width:100%;height:auto;aspect-ratio:10/7;object-fit:cover;border-radius:15px;display:block}
-.project-copy{align-self:center}
-.project-copy h3{margin:.2rem 0 .55rem;color:var(--navy);font:900 2rem Georgia,serif}
-.project-copy p{font-size:1rem;line-height:1.65;margin:.65rem 0}
-@keyframes detailIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* Ways to give */
+.give-section{text-align:center}
+.give-section .section-title{margin-bottom:8px}
+.give-intro{margin:0 auto 22px;max-width:620px}
+.zeffy-wrap{max-width:720px;margin:0 auto;text-align:left}
 
 @media(max-width:800px){
   .hero-section{min-height:0;overflow:visible}
   .hero-image{height:auto;min-height:0}
   .hotspot{width:15%;height:16%;min-width:48px;min-height:42px}
-  #grand{left:50%;top:47%}
-  #triple{left:15%;top:62%}
-  #double{left:50%;top:59%}
-  #single{left:88%;top:63%}
-  #home{left:50%;top:74%}
+  #grand{left:71%;top:52%}
+  #triple{left:14.3%;top:70%}
+  #double{left:50.5%;top:63.5%}
+  #single{left:86%;top:70.5%}
+  #home{left:50.1%;top:85%}
   .sponsor-card{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto;transform:none;max-height:72vh;overflow:auto}
   .projects,.stats{grid-template-columns:1fr 1fr}
   .project-detail{grid-template-columns:1fr;gap:20px}
   .project-copy h3{font-size:1.65rem}
 }
 @media(max-width:520px){
+  .topbar-name{display:none}
+  .topbar-inner{justify-content:space-between}
   .hero-section{min-height:0}
   .hero-image{height:auto;min-height:0}
   .projects,.stats{grid-template-columns:1fr}
@@ -219,11 +235,19 @@ body{
   .project-copy h3{font-size:1.45rem}
   .content{padding:5px 12px 45px}
   .section{padding:21px}
-  .section-title{font-size:1.65rem}
+  .section-title{font-size:1.75rem}
 }
 </style>
 </head>
 <body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <img src="assets/campaign-badge.webp" width="192" height="197" alt="Fox Point East Side 75th Capital Campaign">
+    <span class="topbar-name">75 Seasons Strong</span>
+    <a class="btn btn-light" href="#give">Donate</a>
+  </div>
+</header>
 
 <main>
   <section class="hero-section" aria-label="Interactive sponsorship opportunities">
@@ -231,11 +255,11 @@ body{
       alt="Fox Point East Side Little League fundraising field scene with the raised railroad bridge beyond the outfield fence and five sponsorship opportunities">
 
     <!-- Invisible semantic click/hover zones. The visible labels are part of the artwork. -->
-    <button class="hotspot" id="grand" aria-label="Grand Slam sponsorship, $10,000 and up"></button>
+    <button class="hotspot" id="grand" aria-label="Grand Slam sponsorship, $20,000 and up"></button>
     <button class="hotspot" id="triple" aria-label="Triple sponsorship, $2,500 and up"></button>
     <button class="hotspot" id="double" aria-label="Double sponsorship, $1,000 and up"></button>
     <button class="hotspot" id="single" aria-label="Single sponsorship, $250"></button>
-    <button class="hotspot" id="home" aria-label="Home Run sponsorship, $5,000 and up"></button>
+    <button class="hotspot" id="home" aria-label="Home Run sponsorship, $7,500 and up"></button>
 
     <aside class="sponsor-card" id="sponsorCard" hidden aria-live="polite">
       <button class="card-close" id="closeCard" aria-label="Close sponsorship details">×</button>
@@ -243,7 +267,10 @@ body{
       <h2 id="cardTitle"></h2>
       <div class="card-price" id="cardPrice"></div>
       <ul id="cardBenefits"></ul>
-      <a class="cta" href="mailto:sponsor@fpesll.com?subject=75%20Seasons%20Strong%20Sponsorship">Let's Talk Sponsorship →</a>
+      <div class="card-actions">
+        <a class="btn btn-primary" href="#give">Donate →</a>
+        <a class="btn btn-outline" href="mailto:sponsor@fpesll.com?subject=75%20Seasons%20Strong%20Sponsorship">Let's Talk Sponsorship</a>
+      </div>
     </aside>
   </section>
 
@@ -261,17 +288,17 @@ body{
       </div>
       <div class="projects" role="tablist" aria-label="Capital campaign projects">
         <button class="project active" data-project="cages" role="tab" aria-selected="true">
-          <span class="project-icon">⚾</span>
+          <span class="project-icon"><svg viewBox="0 0 40 120" aria-hidden="true" focusable="false"><path d="M26 6Q-6 60 26 114" fill="none" stroke="#BC0000" stroke-width="2.5"/><path d="M23.7 10.9L17.6 2.6M23.7 10.9L34.0 10.1M19.4 20.7L13.0 12.6M19.4 20.7L29.6 19.6M15.5 30.5L8.7 22.9M15.5 30.5L25.7 28.8M12.5 40.4L5.0 33.4M12.5 40.4L22.5 37.7M10.6 50.2L2.3 44.1M10.6 50.2L20.2 46.3M10.0 60.0L1.0 55.1M10.0 60.0L19.0 54.9M10.6 69.8L1.0 66.1M10.6 69.8L18.9 63.6M12.5 79.6L2.6 77.0M12.5 79.6L20.0 72.5M15.5 89.5L5.4 87.8M15.5 89.5L22.3 81.7M19.4 99.3L9.1 98.2M19.4 99.3L25.7 91.1M23.7 109.1L13.5 108.3M23.7 109.1L29.8 100.8" fill="none" stroke="#BC0000" stroke-width="3.2" stroke-linecap="round"/></svg></span>
           <strong>New Batting Cages</strong>
           <span>Replace the cages damaged during the snow storms last year</span>
         </button>
         <button class="project" data-project="bullpen" role="tab" aria-selected="false">
-          <span class="project-icon">🏟</span>
+          <span class="project-icon"><svg viewBox="0 0 40 120" aria-hidden="true" focusable="false"><path d="M26 6Q-6 60 26 114" fill="none" stroke="#BC0000" stroke-width="2.5"/><path d="M23.7 10.9L17.6 2.6M23.7 10.9L34.0 10.1M19.4 20.7L13.0 12.6M19.4 20.7L29.6 19.6M15.5 30.5L8.7 22.9M15.5 30.5L25.7 28.8M12.5 40.4L5.0 33.4M12.5 40.4L22.5 37.7M10.6 50.2L2.3 44.1M10.6 50.2L20.2 46.3M10.0 60.0L1.0 55.1M10.0 60.0L19.0 54.9M10.6 69.8L1.0 66.1M10.6 69.8L18.9 63.6M12.5 79.6L2.6 77.0M12.5 79.6L20.0 72.5M15.5 89.5L5.4 87.8M15.5 89.5L22.3 81.7M19.4 99.3L9.1 98.2M19.4 99.3L25.7 91.1M23.7 109.1L13.5 108.3M23.7 109.1L29.8 100.8" fill="none" stroke="#BC0000" stroke-width="3.2" stroke-linecap="round"/></svg></span>
           <strong>Dedicated Bullpen</strong>
           <span>A purpose-built space for pitchers and catchers to safely practice.</span>
         </button>
         <button class="project" data-project="scoreboard" role="tab" aria-selected="false">
-          <span class="project-icon">📺</span>
+          <span class="project-icon"><svg viewBox="0 0 40 120" aria-hidden="true" focusable="false"><path d="M26 6Q-6 60 26 114" fill="none" stroke="#BC0000" stroke-width="2.5"/><path d="M23.7 10.9L17.6 2.6M23.7 10.9L34.0 10.1M19.4 20.7L13.0 12.6M19.4 20.7L29.6 19.6M15.5 30.5L8.7 22.9M15.5 30.5L25.7 28.8M12.5 40.4L5.0 33.4M12.5 40.4L22.5 37.7M10.6 50.2L2.3 44.1M10.6 50.2L20.2 46.3M10.0 60.0L1.0 55.1M10.0 60.0L19.0 54.9M10.6 69.8L1.0 66.1M10.6 69.8L18.9 63.6M12.5 79.6L2.6 77.0M12.5 79.6L20.0 72.5M15.5 89.5L5.4 87.8M15.5 89.5L22.3 81.7M19.4 99.3L9.1 98.2M19.4 99.3L25.7 91.1M23.7 109.1L13.5 108.3M23.7 109.1L29.8 100.8" fill="none" stroke="#BC0000" stroke-width="3.2" stroke-linecap="round"/></svg></span>
           <strong>Scoreboards &amp; AV Upgrades</strong>
           <span>A modern game-day experience for players and families.</span>
         </button>
@@ -282,12 +309,12 @@ body{
           <div class="card-kicker" id="projectKicker">NEW BATTING CAGES</div>
           <h3 id="projectTitle">Safe. Durable. Ready for What’s Next.</h3>
           <p id="projectCopy">Our current batting cages were damaged during last winter’s snow storms. This project will replace them with a modern, durable setup that gives players a safe, reliable place to practice, develop their swings, and build confidence.</p>
-          <p id="projectCopy2">Depending on the final footprint and labor costs, the replacing the entire bullpen will cost between $35,000 - 45,000.</p>
+          <p id="projectCopy2">Depending on the final footprint and labor costs, replacing the batting cages will cost between $35,000 and $45,000.</p>
         </div>
       </div>
     </section>
 
-    <div class="section">
+    <div class="section section-dark">
       <h2 class="section-title">Who We Serve</h2>
       <div class="stats">
         <div class="stat"><b>500+</b><span>players per season</span></div>
@@ -296,6 +323,22 @@ body{
         <div class="stat"><b>100%</b><span>local Fox Point &amp; East Side families</span></div>
       </div>
     </div>
+
+    <section class="section give-section" id="give" aria-labelledby="giveTitle">
+      <div class="campaign-kicker">Ways to Give</div>
+      <h2 class="section-title" id="giveTitle">Every Gift Builds the Next 75</h2>
+      <p class="give-intro">Give at any level. Every gift counts toward our $75,000 goal.</p>
+      <div class="zeffy-wrap">
+        <div data-zeffy-embed data-form-url="/embed/donation-form/75th-anniversary-capital-campaign"></div>
+        <div data-zeffy-embed-fallback style="display:none;">
+          <div style="position:relative;overflow:hidden;height:900px;width:100%;"><iframe title='Donation form powered by Zeffy' style='position: absolute; border: 0; top:0;left:0;bottom:0;right:0;width:100%;height:100%' data-zeffy-embed-src='https://www.zeffy.com/embed/donation-form/75th-anniversary-capital-campaign' allowpaymentrequest allowTransparency="true"></iframe></div>
+        </div>
+        <script
+          src="https://www.zeffy.com/embed/v2/zeffy-embed.js"
+          onerror="document.querySelectorAll('[data-zeffy-embed-fallback]').forEach(function(el){el.style.display='block';el.querySelectorAll('iframe[data-zeffy-embed-src]').forEach(function(f){f.src=f.getAttribute('data-zeffy-embed-src');});});">
+        </script>
+      </div>
+    </section>
   </section>
 </main>
 
@@ -304,7 +347,7 @@ const sponsorships = {
   grand:{
     level:"Grand Slam",
     title:"Grand Slam Sponsor",
-    price:"$10,000+",
+    price:"$20,000+",
     benefits:[
       "Plaque at the Fox Den",
       "Prominent signage at all league fields",
@@ -315,7 +358,7 @@ const sponsorships = {
   home:{
     level:"Home Run",
     title:"Home Run Sponsor",
-    price:"$5,000+",
+    price:"$7,500+",
     benefits:[
       "Plaque at the Fox Den",
       "Signage at league fields",
@@ -377,13 +420,13 @@ buttons.forEach(button=>{
 const projectContent={
   cages:{photo:"assets/batting-cages.webp",kicker:"NEW BATTING CAGES",title:"Safe. Durable. Ready for What’s Next.",
     copy:"Our current batting cages were damaged during last winter’s snow storms. This project will replace them with a modern, durable setup that gives players a safe, reliable place to practice, develop their swings, and build confidence.",
-    copy2:"Depending on the final footprint and labor costs, the replacing the entire bullpen will cost between $35,000 - 45,000."},
+    copy2:"Depending on the final footprint and labor costs, replacing the batting cages will cost between $35,000 and $45,000."},
   bullpen:{photo:"assets/bullpen.webp",kicker:"DEDICATED BULLPEN",title:"A Better Place to Prepare.",
     copy:"A dedicated bullpen gives pitchers and catchers a purpose-built place to work on mechanics, communication, and confidence without taking practice space away from the field.",
-    copy2:"The equipment we need for a safe and bullpen experience will be approximately $1250."},
+    copy2:"The equipment we need for a safe bullpen experience will cost approximately $1,250."},
   scoreboard:{photo:"assets/scoreboard.webp",kicker:"SCOREBOARDS & AV UPGRADES",title:"Make Game Day Feel Like Game Day.",
     copy:"Modern scoreboards and AV upgrades can improve the experience for players, families, coaches, and volunteers while giving the league a more visible and engaging game-day presence.",
-    copy2:"The estimated cost to overhaul the AV system and improve or replace the scoreboards at Gano Fields will run cost the league between $5,000-$10,000."}
+    copy2:"The estimated cost to overhaul the AV system and improve or replace the scoreboards at Gano Fields will cost the league between $5,000 and $10,000."}
 };
 function selectProject(key){
   const p=projectContent[key];
